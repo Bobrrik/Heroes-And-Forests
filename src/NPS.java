@@ -42,7 +42,7 @@ public abstract class NPS {
             this.Gold += enemy.Gold;
 //            System.out.println(this.Gold);
 //            System.out.println(this.EXPERIENCE);
-            System.out.println(this.Name + " Погубил " + enemy.Name + " И получил Золото:" + enemy.Gold + " И Опыт:10");
+            System.out.println(this.Name + " Погубил " + enemy.Name + " И получил Золото:" + enemy.Gold + " И Опыт");
             enemy.Gold = 0;
             enemy.Die();
             LevelPlus();

@@ -7,7 +7,6 @@ public class Start {
 
 
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("введите имя героя");
@@ -19,15 +18,25 @@ public class Start {
 
         while (true) {
             int s = scanner.nextInt();
-            if (s == 4) { //завершение
-                System.out.println("Игра закончена с такими показателями");
-                LookYourSelf(hero);
+            if (s == 4) {//завершение
+                Exit(hero);
                 break;
-            } else if (s == 1) Torg(hero); // к торговцу
-            else if (s == 2) Forest(hero);// в лес
+            }
+            else if (s == 1) Torg(hero); // к торговцу
+            else if (s == 2) {// в лес
+                Forest(hero);
+                if (!hero.getLive()){
+                    break;
+                }
+            }
             else if (s == 3) LookYourSelf(hero); //посмотреть статы
             else System.out.println("что-то ввели не так");
         }
+    }
+
+    public static void Exit(NPS hero) {
+        System.out.println("Игра закончена с такими показателями");
+        LookYourSelf(hero);
     }
 
     public static void Panel() {
@@ -48,10 +57,10 @@ public class Start {
         System.out.println("Вот его товары");
         Dealer.assortment();
         System.out.println("""
-                покупаешь?
-                1. Да
-                2. В следующий раз
-               """);
+                 покупаешь?
+                 1. Да
+                 2. В следующий раз
+                """);
         int s = scanner.nextInt();
         if (s == 1) {
             if (hero.getGold() >= 50) {
@@ -63,13 +72,17 @@ public class Start {
         Panel();
     }
 
-    public static void Forest(NPS nps) {
-        Confrontation.Fight(nps, Confrontation.RandomMob());
-        Panel();
+    public static void Forest(NPS hero) {
+        Confrontation.Fight(hero, Confrontation.RandomMob());
+        if (hero.getLive()) Panel() ;
+        else {
+            System.out.println("Герой умер :(");
+            Exit(hero);
+        }
     }
 
     public static void LookYourSelf(NPS nps) {
         System.out.println(nps.toString());
-        Panel();
+        if (nps.getLive()) Panel();
     }
 }

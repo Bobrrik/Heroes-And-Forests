@@ -25,7 +25,7 @@ public class Hero extends NPS {
 //        Potion -= 1;
         if ((getHP() + 50) > getMaxHP()) {
             setHP(getHP() + (getMaxHP() - getHP()));
-            System.out.printf("герой вылечил себя на хп %d теперь его здоровье равно %d \n", (getMaxHP() - getHP()), this.getHP());
+            System.out.printf("герой вылечил себя теперь его здоровье равно %d \n", this.getHP());
         } else {
             setHP(getHP() + 50);
             System.out.printf("герой вылечил себя на хп %d теперь его здоровье равно %d \n", 50, this.getHP());
@@ -33,7 +33,7 @@ public class Hero extends NPS {
     }
 
     public void LevelPlus() {
-        setEXPERIENCE(getEXPERIENCE() + 10);
+        setEXPERIENCE(getEXPERIENCE() + 20);
         if (getEXPERIENCE() >= 100) {
             LevelUp();
             setEXPERIENCE(0);

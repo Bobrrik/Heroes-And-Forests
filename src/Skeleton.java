@@ -9,6 +9,8 @@ public class Skeleton extends Monster {
         setEXPERIENCE(0);
         setRebirth(1); //умеет перерождаться после смерти
         setMaxHP(getHP());
+
+        System.out.println("появился "+this.getClass()+" по имени "+ this.getName());
     }
 
     public void ShotSelection(NPS enemy) {
