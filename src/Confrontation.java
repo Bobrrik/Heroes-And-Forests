@@ -8,12 +8,17 @@ public class Confrontation {
         int random = (int) (Math.random() * 10);
         if (random > 4) return new Skeleton(RandomName());
         else return new Goblin(RandomName());
+
     }
 
     public static void Fight(NPS enemy1, NPS enemy2) {
+        int raund = 1;
+
         while (enemy1.getLive() && enemy2.getLive()) {
+            System.out.println("ход "+raund);
             if (enemy1.getLive()) enemy1.ShotSelection(enemy2);
             if (enemy2.getLive()) enemy2.ShotSelection(enemy1);
+            raund++;
         }
     }
 
